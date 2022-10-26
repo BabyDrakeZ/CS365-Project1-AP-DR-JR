@@ -1,0 +1,31 @@
+ 
+
+
+Title 	     Re-Bugged
+	
+Tag line “We’re always up to some ant-ics”
+
+Team Members David Richman, Jared Rivard, Anthony Pouliot
+
+Genre        Tower Defense/Action
+
+Setting       Ants defending an anthill from other robotic insects
+
+Plays like: Dungeon Defenders  meets  Plants vs. Zombies
+ 		            Game A 		 	               Game B
+
+Summary of rules and scoring 
+
+You start out as a singular ant. Your goal is to defend your home, an anthill at the center of the map. You must collect more food to spawn more friendly ants. As you gather more ants you get a swarm that you can move and defend your home with. There are two types of ants: warrior and forager ants. Foragers collect food (allowing for more ants). Warriors add to your swarm’s strength (damage/health). Ants are also used to build fortifications to defend your anthill against enemies.
+
+The enemies are robot spiders, robot ants, and other robotic insects. Enemies attack warrior ants upon being attacked, but otherwise target the anthill. Some enemy robots target forager ants/food sources specifically.
+
+There will be three “waves” of enemies, separated by a period for preparation. Third wave has a boss battle. You gain points for every enemy you kill. More points are gained for enemies that are more difficult to defeat. You lose points for damage dealt to your home. Defeat occurs upon anthill destruction; Victory upon destroying the third wave.
+
+Mechanics:
+1. Food collection begets more ants.	  
+2. Fortification Construction
+3. Swarm movement/attacks
+4. (supply lines... maybe)
+
+(See StoryBoard Below)
