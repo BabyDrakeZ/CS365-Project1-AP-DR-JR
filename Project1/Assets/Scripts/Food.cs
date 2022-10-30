@@ -4,6 +4,8 @@ using UnityEngine;
 //ANTHONY POULIOT
 public class Food : MonoBehaviour
 {
+    public Manager manager;
+    int foodVal = 10;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,7 +23,8 @@ public class Food : MonoBehaviour
         GameObject gameObject = collision.gameObject;
         if (gameObject.tag == "ant")
         {
-            //manager.spawnAnt
+            Constants.C.food += foodVal;
+            manager.numFood--;
             Destroy(this.gameObject);
         }
     }
