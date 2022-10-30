@@ -16,7 +16,7 @@ public class GenerateAnt : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Constants.C.food => foodCost)
+        if(Constants.C.food >= foodCost)
         {
             SwarmMove data = swarm.GetComponent<SwarmMove>();
             data.addMember(spawnPoint.transform.position);
