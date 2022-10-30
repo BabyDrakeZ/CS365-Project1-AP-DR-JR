@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+//DAVID RICHMAN
 public class GenerateAnt : MonoBehaviour
 {
     public int foodCost = 10;

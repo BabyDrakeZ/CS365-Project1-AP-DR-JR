@@ -6,7 +6,8 @@ public class Manager : MonoBehaviour
 {
     public GameObject Food;
     public GameObject swarm;
-    public int numFood = 0;
+    public int initialFood = 10;
+    private int numFood = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,9 +17,14 @@ public class Manager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(numFood < 5)
+        if(numFood < initialFood)
             StartCoroutine(spawnFood());
     }
+    public void decrementNumFood()
+    {
+        numFood--;
+    }
+
     IEnumerator spawnFood()
     {
         numFood++;
@@ -26,8 +32,8 @@ public class Manager : MonoBehaviour
         Vector2 distance;
         do
             {
-                int x = Random.Range(-10, 10);
-                int y = Random.Range(-6, 6);
+                float x = Random.Range(-Constants.C.boundX * 0.5f, Constants.C.boundX * 0.5f);
+                float y = Random.Range(-Constants.C.boundY * 0.5f, Constants.C.boundY * 0.5f);
                 distance = new Vector2(x - swarm.transform.position.x, y - swarm.transform.position.y);
             } while (distance.magnitude < 3);
         GameObject instance = Instantiate(Food);

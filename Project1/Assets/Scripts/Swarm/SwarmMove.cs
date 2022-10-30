@@ -50,10 +50,10 @@ public class SwarmMove : MonoBehaviour
     void GetInput()
     {
         direction = Vector2.zero;
-        bool blockMovingUp = this.transform.position.y > 25;
-        bool blockMovingDown = this.transform.position.y < -25;
-        bool blockMovingRight = this.transform.position.x < -50;
-        bool blockMovingLeft = this.transform.position.x > 50;
+        bool blockMovingUp = this.transform.position.y > Constants.C.boundY;
+        bool blockMovingDown = this.transform.position.y < -Constants.C.boundY;
+        bool blockMovingLeft = this.transform.position.x < -Constants.C.boundX;
+        bool blockMovingRight = this.transform.position.x > Constants.C.boundX;
 
         bool overloadX = (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) && (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow));
         bool overloadY = (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)) && (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow));

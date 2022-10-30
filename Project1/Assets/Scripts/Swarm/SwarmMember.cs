@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//DAVID RICHMAN
+
 public class SwarmMember : MonoBehaviour
 {
     public float speed = 0.2f;

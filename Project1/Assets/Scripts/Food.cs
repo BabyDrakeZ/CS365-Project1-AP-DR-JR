@@ -5,7 +5,7 @@ using UnityEngine;
 public class Food : MonoBehaviour
 {
     public Manager manager;
-    int foodVal = 10;
+    public int foodVal = 10;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,7 +24,7 @@ public class Food : MonoBehaviour
         if (gameObject.tag == "ant")
         {
             Constants.C.food += foodVal;
-            manager.numFood--;
+            manager.decrementNumFood();
             Destroy(this.gameObject);
         }
     }

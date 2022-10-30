@@ -16,7 +16,7 @@ public class SplashSceneManager : MonoBehaviour
         
     }
 
-    IEnumerator ChangeScene()
+    IEnumerator ChangeScene()//DR
     {
         yield return new WaitForSeconds(2);
         UnityEngine.SceneManagement.SceneManager.LoadScene("SampleScene");
