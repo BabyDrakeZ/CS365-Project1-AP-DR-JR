@@ -18,7 +18,10 @@ public class SwarmMove : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        addMember();
+        for (int i = 0; i < 10; i++)
+        {
+            addMember();
+        }
         
     }
 
@@ -48,10 +51,10 @@ public class SwarmMove : MonoBehaviour
     void GetInput()
     {
         direction = Vector2.zero;
-        bool blockMovingUp = false;
-        bool blockMovingDown = false;
-        bool blockMovingRight = false;
-        bool blockMovingLeft = false;
+        bool blockMovingUp = this.transform.position.y > 25;
+        bool blockMovingDown = this.transform.position.y < -25;
+        bool blockMovingRight = this.transform.position.x < -50;
+        bool blockMovingLeft = this.transform.position.x > 50;
 
         bool overloadX = (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) && (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow));
         bool overloadY = (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)) && (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.RightArrow));

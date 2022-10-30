@@ -218,6 +218,7 @@ GameObject:
   - component: {fileID: 729314921}
   - component: {fileID: 729314920}
   - component: {fileID: 729314919}
+  - component: {fileID: 729314922}
   m_Layer: 0
   m_Name: SwarmCenter
   m_TagString: Player
@@ -309,3 +310,15 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &729314922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 729314918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b03f91fd2d4bdc42ba5fa56457ccceb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
