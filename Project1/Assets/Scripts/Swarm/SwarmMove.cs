@@ -56,7 +56,7 @@ public class SwarmMove : MonoBehaviour
         bool blockMovingLeft = this.transform.position.x > 50;
 
         bool overloadX = (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) && (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow));
-        bool overloadY = (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)) && (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.RightArrow));
+        bool overloadY = (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)) && (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow));
 
         bool isMoving = false;
 
