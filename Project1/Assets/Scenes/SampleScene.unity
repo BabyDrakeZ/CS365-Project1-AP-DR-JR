@@ -257,7 +257,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   foodCost: 0
   swarm: {fileID: 7298301270950560608}
-  spawnPoint: {fileID: 0}
+  spawnPoint: {fileID: 1529816599}
 --- !u!1001 &6215458713304511703
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -371,6 +371,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7298301270261118264, guid: f65cea04bb5296e4b8dadb4c06f21adc, type: 3}
+      propertyPath: antHill
+      value: 
+      objectReference: {fileID: 1695886560}
     - target: {fileID: 7298301270261118265, guid: f65cea04bb5296e4b8dadb4c06f21adc, type: 3}
       propertyPath: m_Name
       value: SwarmCenter
