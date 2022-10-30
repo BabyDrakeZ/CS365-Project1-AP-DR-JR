@@ -17,7 +17,7 @@ public class GenerateAnt : MonoBehaviour
     {
         while(Constants.C.food > foodCost)
         {
-            
+            swarm.GetComponent<SwarmMove>();
         }
     }
 }
