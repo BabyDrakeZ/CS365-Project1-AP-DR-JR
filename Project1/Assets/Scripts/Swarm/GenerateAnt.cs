@@ -18,9 +18,14 @@ public class GenerateAnt : MonoBehaviour
     {
         if(Constants.C.food >= foodCost)
         {
-            SwarmMove data = swarm.GetComponent<SwarmMove>();
-            data.addMember(spawnPoint.transform.position);
-            Constants.C.food -= foodCost;
+            StartCoroutine(Spawn());
         }
+    }
+    IEnumerator Spawn()
+    {
+        Constants.C.food -= foodCost;
+        yield return new WaitForSeconds(Random.Range(2, 10));
+        SwarmMove data = swarm.GetComponent<SwarmMove>();
+        data.addMember(spawnPoint.transform.position);
     }
 }
