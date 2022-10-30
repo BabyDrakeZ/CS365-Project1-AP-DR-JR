@@ -2,11 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//DAVID RICHMAN
+
 public class SwarmMove : MonoBehaviour
 {
     public float speed = 3;
     public float maxSpeed = 15;
     public float lerpConstant = 0.8f;
+
+    public GameObject antHill;
 
     public GameObject memberPrefab;
 
@@ -26,7 +30,7 @@ public class SwarmMove : MonoBehaviour
     }
 
     //Instantiates a new member and adds it to the swarm
-    void addMember()
+    public void addMember()
     {
         GameObject member = Instantiate(memberPrefab);
         member.transform.position = Vector3.zero;

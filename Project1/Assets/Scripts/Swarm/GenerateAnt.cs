@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class GenerateAnt : MonoBehaviour
 {
-
+    public int foodCost;
+    public GameObject swarm;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,6 +15,9 @@ public class GenerateAnt : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        while(Constants.C.food > foodCost)
+        {
+            
+        }
     }
 }
