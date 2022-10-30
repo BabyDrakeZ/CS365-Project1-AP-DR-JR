@@ -21,19 +21,14 @@ public class SwarmMove : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    {
-        for (int i = 0; i < 10; i++)
-        {
-            addMember();
-        }
-        
+    {        
     }
 
     //Instantiates a new member and adds it to the swarm
-    public void addMember()
+    public void addMember(Vector3 pos)
     {
         GameObject member = Instantiate(memberPrefab);
-        member.transform.position = Vector3.zero;
+        member.transform.position = pos;
         //member.transform.parent = this.transform;
         swarm.Enqueue(member);
     }

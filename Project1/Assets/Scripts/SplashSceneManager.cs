@@ -13,7 +13,7 @@ public class SplashSceneManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        
     }
 
     IEnumerator ChangeScene()

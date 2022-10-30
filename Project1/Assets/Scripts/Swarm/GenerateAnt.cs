@@ -6,6 +6,7 @@ public class GenerateAnt : MonoBehaviour
 {
     public int foodCost;
     public GameObject swarm;
+    public GameObject spawnPoint;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,7 +18,8 @@ public class GenerateAnt : MonoBehaviour
     {
         while(Constants.C.food > foodCost)
         {
-            swarm.GetComponent<SwarmMove>();
+            SwarmMove data = swarm.GetComponent<SwarmMove>();
+            data.addMember(spawnPoint.transform.position);
         }
     }
 }
