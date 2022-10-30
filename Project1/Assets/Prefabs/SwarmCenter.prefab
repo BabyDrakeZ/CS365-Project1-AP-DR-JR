@@ -101,6 +101,7 @@ MonoBehaviour:
   speed: 15
   maxSpeed: 20
   lerpConstant: 0.8
+  antHill: {fileID: 0}
   memberPrefab: {fileID: 2439768890240585608, guid: 890a6a79c4574914d9641ad6be4b4d3d, type: 3}
   direction: {x: 0, y: 0}
 --- !u!114 &7298301270261118261

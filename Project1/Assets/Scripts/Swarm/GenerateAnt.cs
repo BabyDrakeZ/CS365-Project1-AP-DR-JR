@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GenerateAnt : MonoBehaviour
 {
-    public int foodCost;
+    public int foodCost = 10;
     public GameObject swarm;
     public GameObject spawnPoint;
     // Start is called before the first frame update
