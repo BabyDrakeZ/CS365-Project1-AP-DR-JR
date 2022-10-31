@@ -5,7 +5,10 @@ using UnityEngine;
 public class Constants : MonoBehaviour
 {
     static public Constants C;
-    public int food;
+    public float health = 100;
+    public int food = 50;
+    public int foodUsed = 0;
+    public int unitCost = 15;
     public float boundX = 50;
     public float boundY = 25;
 
@@ -19,5 +22,10 @@ public class Constants : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public int foodLeft()
+    {
+        return food - foodUsed;
     }
 }

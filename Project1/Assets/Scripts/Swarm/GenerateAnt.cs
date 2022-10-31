@@ -4,26 +4,24 @@ using UnityEngine;
 //DAVID RICHMAN
 public class GenerateAnt : MonoBehaviour
 {
-    public int foodCost = 10;
     public GameObject swarm;
     public GameObject spawnPoint;
     // Start is called before the first frame update
     void Start()
     {
-        Constants.C.food = 50;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Constants.C.food >= foodCost)
+        if(Constants.C.foodLeft() >= Constants.C.unitCost)
         {
             StartCoroutine(Spawn());
         }
     }
     IEnumerator Spawn()
     {
-        Constants.C.food -= foodCost;
+        Constants.C.foodUsed += Constants.C.unitCost;
         yield return new WaitForSeconds(Random.Range(2, 5));
         SwarmMove data = swarm.GetComponent<SwarmMove>();
         data.addMember(spawnPoint.transform.position);
