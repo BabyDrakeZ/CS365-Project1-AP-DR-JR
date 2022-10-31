@@ -22,7 +22,7 @@ public class GenerateAnt : MonoBehaviour
     IEnumerator Spawn()
     {
         Constants.C.foodUsed += Constants.C.unitCost;
-        yield return new WaitForSeconds(Random.Range(2, 5));
+        yield return new WaitForSeconds(Random.Range(0, 3));
         SwarmMove data = swarm.GetComponent<SwarmMove>();
         data.addMember(spawnPoint.transform.position);
     }
