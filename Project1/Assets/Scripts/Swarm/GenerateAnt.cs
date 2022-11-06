@@ -6,6 +6,7 @@ public class GenerateAnt : MonoBehaviour
 {
     public GameObject swarm;
     public GameObject spawnPoint;
+    public AudioSource spawnSound;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,5 +26,7 @@ public class GenerateAnt : MonoBehaviour
         yield return new WaitForSeconds(Random.Range(0, 3));
         SwarmMove data = swarm.GetComponent<SwarmMove>();
         data.addMember(spawnPoint.transform.position);
+        if (!spawnSound.isPlaying)
+            spawnSound.PlayOneShot(spawnSound.clip, 0.25f);
     }
 }
