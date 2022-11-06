@@ -24,7 +24,7 @@ public class Food : MonoBehaviour
         if (gameObject.tag == "ant")
         {
             Constants.C.food += foodVal;
-            manager.decrementNumFood();
+            manager.DecrementNumFood();
             Destroy(this.gameObject);
         }
     }

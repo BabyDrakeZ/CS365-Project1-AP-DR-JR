@@ -7,18 +7,20 @@ public class SplashSceneManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(ChangeScene());
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            ChangeScene();
+        }
     }
 
-    IEnumerator ChangeScene()//DR
+    void ChangeScene()//DR
     {
-        yield return new WaitForSeconds(2);
         UnityEngine.SceneManagement.SceneManager.LoadScene("SampleScene");
     }
 }

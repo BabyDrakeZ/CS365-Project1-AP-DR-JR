@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Manager : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class Manager : MonoBehaviour
     public GameObject swarm;
     public int initialFood = 10;
     private int numFood = 0;
+    private bool gameOver = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,14 +20,19 @@ public class Manager : MonoBehaviour
     void Update()
     {
         if(numFood < initialFood)
-            StartCoroutine(spawnFood());
+            StartCoroutine(SpawnFood());
+        if (Constants.C.health <= 0)
+        {
+            gameOver = true;
+            StartCoroutine(GameOver());
+        }
     }
-    public void decrementNumFood()
+    public void DecrementNumFood()
     {
         numFood--;
     }
 
-    IEnumerator spawnFood()
+    IEnumerator SpawnFood()
     {
         numFood++;
         yield return new WaitForSeconds(Random.Range(2, 10));
@@ -40,5 +47,11 @@ public class Manager : MonoBehaviour
         instance.transform.position = new Vector3(distance.x, distance.y, 0);
         Food food = instance.GetComponent<Food>();
         food.manager = this;
+    }
+
+    IEnumerator GameOver()
+    {
+        yield return new WaitForSeconds(3);
+        SceneManager.LoadScene("GameOver");
     }
 }

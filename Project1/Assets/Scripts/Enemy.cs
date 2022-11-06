@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//DR
 public class Enemy : MonoBehaviour
 {
     public Manager manager;
-    public float health;
-    public float attack;
-    public float speed;
+    public float health = 50;
+    public float attack = 5;
+    public float attackSpeed = 1f;
+    public float speed = 0.75f;
     private Vector3 direction;
     private bool stopMovement = false;
 
@@ -30,11 +32,11 @@ public class Enemy : MonoBehaviour
             this.transform.position += newPostion;
         }
         else {
-            StartCoroutine(Lunge());
+            StartCoroutine(Attack());
         }
         
     }
-    IEnumerator Lunge()
+    IEnumerator Attack()
     {
         direction = this.transform.position - Vector3.zero;
         if (direction != Vector3.zero)
@@ -42,7 +44,7 @@ public class Enemy : MonoBehaviour
             direction.Normalize();
         }
         stopMovement = false;
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(attackSpeed);
         direction = Vector3.zero - this.transform.position;
         if (direction != Vector3.zero)
         {
