@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour
     public float attack = 5;
     public float attackSpeed = 1f;
     public float speed = 0.75f;
+    public AudioSource hillAttack;
     private Vector3 direction;
     private bool stopMovement = false;
 
@@ -58,6 +59,8 @@ public class Enemy : MonoBehaviour
         {
             stopMovement = true;
             Constants.C.health -= attack;
+            if (!hillAttack.isPlaying)
+                hillAttack.PlayOneShot(hillAttack.clip, 0.5f);
         }
         if (obj.tag == "ant")
         {
