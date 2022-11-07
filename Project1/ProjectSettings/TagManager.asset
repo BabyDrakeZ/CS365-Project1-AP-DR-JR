@@ -6,6 +6,7 @@ TagManager:
   tags:
   - ant
   - hill
+  - enemy
   layers:
   - Default
   - TransparentFX

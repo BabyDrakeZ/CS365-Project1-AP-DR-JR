@@ -15,7 +15,7 @@ public class HealthBar : MonoBehaviour
     {
         fill = Constants.C.health / 2;
         healthBar = GetComponent<Image>();
-        maximum = Constants.C.health;
+        
     }
 
     // Update is called once per frame
@@ -30,7 +30,7 @@ public class HealthBar : MonoBehaviour
         fill = Mathf.Lerp(fill, Constants.C.health, lerpConstant);
         try
         {
-            healthBar.fillAmount = fill / maximum;
+            healthBar.fillAmount = fill / Constants.C.getMaxHealth();
         } catch
         {
             healthBar = GetComponent<Image>();

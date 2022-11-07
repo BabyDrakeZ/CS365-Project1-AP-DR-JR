@@ -27,8 +27,10 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         if (!stopMovement)
         {
+            this.GetComponent<SpriteRenderer>().flipX = direction.x < 0;
             Vector3 newPostion = new Vector3(speed * direction.x * Time.deltaTime, speed * direction.y * Time.deltaTime, 0);
             this.transform.position += newPostion;
         }
