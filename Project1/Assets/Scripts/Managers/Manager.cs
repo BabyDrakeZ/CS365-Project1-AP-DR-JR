@@ -35,6 +35,9 @@ public class Manager : MonoBehaviour
         {
             PlayerPrefs.SetInt(gameScoreKey, pastScore);
         }
+        swarm = Instantiate(swarm);
+        antHill.GetComponent<GenerateAnt>().swarm = swarm;
+        swarm.transform.position = Vector3.zero;
     }
 
     // Update is called once per frame

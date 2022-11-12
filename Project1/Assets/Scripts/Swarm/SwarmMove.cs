@@ -10,8 +10,6 @@ public class SwarmMove : MonoBehaviour
     public float maxSpeed = 15;
     public float lerpConstant = 0.8f;
 
-    public GameObject antHill;
-
     public GameObject memberPrefab;
 
     private Queue<GameObject> swarm = new Queue<GameObject>();
@@ -27,7 +25,7 @@ public class SwarmMove : MonoBehaviour
     //Instantiates a new member and adds it to the swarm
     public void addMember(Vector3 pos)
     {
-        GameObject member = Instantiate(memberPrefab);
+        GameObject member = Instantiate(memberPrefab, this.gameObject.transform);
         member.transform.position = pos;
         //member.transform.parent = this.transform;
         swarm.Enqueue(member);
@@ -42,7 +40,7 @@ public class SwarmMove : MonoBehaviour
     {
         GetInput();
         localSpeed = Mathf.Clamp(localSpeed, 0, maxSpeed);
-        localSpeed = Mathf.Lerp(localSpeed, 0, lerpConstant);
+        localSpeed = Mathf.Lerp(localSpeed, speed, lerpConstant);
         Vector3 newPostion = new Vector3(localSpeed * direction.x * Time.deltaTime, localSpeed * direction.y * Time.deltaTime, 0);
         this.transform.position += newPostion;
     }

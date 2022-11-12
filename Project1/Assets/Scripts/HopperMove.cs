@@ -5,7 +5,6 @@ using UnityEngine;
 public class HopperMove : MonoBehaviour
 {
     private AI AIclass;
-    public GameObject target;
 
     public float hopStrength = 50f;
     public float hopDuration = 0.25f;
@@ -24,10 +23,10 @@ public class HopperMove : MonoBehaviour
     {
         if (isTracking)
         {
-            float tiltX = Random.Range(-rawDir.magnitude / 4, rawDir.magnitude / 4);
-            float tiltY = Random.Range(-rawDir.magnitude / 4, rawDir.magnitude / 4);
+            int rand = Random.Range(0, 2);
+            if (rand == 0) rand = -1;
             //drift toward center
-            dir = new Vector2(rawDir.x + tiltX, rawDir.x + tiltY);
+            dir = rawDir + rand*Vector2.Perpendicular(rawDir)/2;
             if (dir != Vector2.zero)
                 dir.Normalize();
         }
@@ -52,7 +51,7 @@ public class HopperMove : MonoBehaviour
     IEnumerator Hold()
     {
         isTracking = true;
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(Random.Range(hopDuration/2f, hopDuration));
         isTracking = false;
         isHopping = false;
     }
@@ -60,10 +59,6 @@ public class HopperMove : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         GameObject gameObject = collision.gameObject;
-        if (gameObject == target)
-        {
-
-        }
     }
 
 }

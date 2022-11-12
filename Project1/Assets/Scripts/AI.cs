@@ -9,14 +9,14 @@ public class AI : MonoBehaviour
     public float speed = 1;
     public float actualSpeed = 1;
     public float lerpConstant = 0.9f;
-    private GameObject player;
+    private GameObject target;
     private string name;
     // Start is called before the first frame update
     void Start()
     {
         name = "AIEnemy_" + Time.time.ToString();
-        player = GameObject.FindGameObjectWithTag("Player");
-        if (player == null)
+        target = GameObject.FindGameObjectWithTag("Player");
+        if (target == null)
             Debug.Log("AI::Start couldn't find player" + name.ToString());
     }
 
@@ -30,7 +30,7 @@ public class AI : MonoBehaviour
 
     Vector3 ProcessAI()
     {
-        Vector3 rawDir = player.transform.position - this.transform.position;
+        Vector3 rawDir = target.transform.position - this.transform.position;
         Vector2 dir = new Vector2(rawDir.x, rawDir.y);
         switch (aiType)
         {
@@ -70,8 +70,8 @@ public class AI : MonoBehaviour
     private Vector2 deltaTrack(Vector3 rawDirection)
     {
         Vector2 temp = Vector2.zero;
-        float deltaX = player.transform.position.x - transform.position.x;
-        float deltaY = player.transform.position.y - transform.position.y;
+        float deltaX = target.transform.position.x - transform.position.x;
+        float deltaY = target.transform.position.y - transform.position.y;
 
         float threshold = 0.1f;
         if (deltaX > threshold)
