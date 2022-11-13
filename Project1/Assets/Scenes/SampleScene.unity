@@ -501,6 +501,7 @@ MonoBehaviour:
   - {fileID: 1941139058915197251, guid: 0b8dc256624a6a74d81704c6161a9e72, type: 3}
   maxFood: 15
   maxEnemies: 2
+  enemyHardLimit: 20
 --- !u!4 &726268269
 Transform:
   m_ObjectHideFlags: 0
@@ -1081,7 +1082,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: dec8e5a47b7ded048afdab923fcbc3b6, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0

@@ -12,6 +12,7 @@ public class Manager : MonoBehaviour
     public int maxFood = 10;
     private int numFood = 0;
     public int maxEnemies = 3;
+    public int enemyHardLimit = 20;
     private int numEnemies = 0;
     private bool gameOver = false;
     const string highScoreKey = "HighScore";
@@ -38,6 +39,7 @@ public class Manager : MonoBehaviour
         swarm = Instantiate(swarm);
         antHill.GetComponent<GenerateAnt>().swarm = swarm;
         swarm.transform.position = Vector3.zero;
+        StartCoroutine(incrementLimit());
     }
 
     // Update is called once per frame
@@ -88,5 +90,16 @@ public class Manager : MonoBehaviour
             PlayerPrefs.SetInt(highScoreKey, gameScore);
         }
         SceneManager.LoadScene("GameOver");
+    }
+    //Anthony
+    IEnumerator incrementLimit()
+    {
+        while(maxEnemies<enemyHardLimit)
+        {
+            yield return new WaitForSeconds(10);
+            maxEnemies++;
+            if (maxEnemies >= 10)
+                maxEnemies++;
+        }
     }
 }
