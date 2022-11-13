@@ -94,12 +94,15 @@ public class Manager : MonoBehaviour
     //Anthony
     IEnumerator incrementLimit()
     {
-        while(maxEnemies<enemyHardLimit)
+        if (maxEnemies < enemyHardLimit)
         {
             yield return new WaitForSeconds(10);
             maxEnemies++;
             if (maxEnemies >= 10)
                 maxEnemies++;
+            StartCoroutine(incrementLimit());
         }
+        else 
+            yield return new WaitForEndOfFrame();
     }
 }
