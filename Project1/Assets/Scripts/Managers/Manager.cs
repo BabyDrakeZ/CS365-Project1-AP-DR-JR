@@ -13,6 +13,7 @@ public class Manager : MonoBehaviour
     private int numFood = 0;
     public int maxEnemies = 3;
     public int enemyHardLimit = 20;
+    public int levelSpeed = 10;
     private int numEnemies = 0;
     private bool gameOver = false;
     const string highScoreKey = "HighScore";
@@ -96,10 +97,10 @@ public class Manager : MonoBehaviour
     {
         if (maxEnemies < enemyHardLimit)
         {
-            yield return new WaitForSeconds(10);
+            yield return new WaitForSeconds(levelSpeed);
             maxEnemies++;
-            if (maxEnemies >= 10)
-                maxEnemies++;
+            if (maxEnemies > 10)
+                maxEnemies += maxEnemies/10;
             StartCoroutine(incrementLimit());
         }
         else 
