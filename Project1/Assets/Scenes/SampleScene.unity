@@ -502,6 +502,7 @@ MonoBehaviour:
   maxFood: 15
   maxEnemies: 2
   enemyHardLimit: 20
+  levelSpeed: 10
 --- !u!4 &726268269
 Transform:
   m_ObjectHideFlags: 0
