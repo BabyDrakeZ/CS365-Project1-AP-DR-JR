@@ -7,6 +7,7 @@ public class Food : MonoBehaviour
     public Manager manager;
     public int foodVal = 10;
     public int healthVal = 2;
+    public AudioSource foodsound;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +25,8 @@ public class Food : MonoBehaviour
         GameObject gameObject = collision.gameObject;
         if (gameObject.tag == "ant")
         {
+            if (!foodsound.isPlaying)
+                foodsound.PlayOneShot(foodsound.clip, 0.25f);
             Constants.C.food += foodVal; 
             //DR added health replenishment
             if (Constants.C.health + healthVal <= Constants.C.getMaxHealth())
