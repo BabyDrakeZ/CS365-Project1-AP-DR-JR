@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SplashSceneManager : MonoBehaviour
+public class InstructionSceneManager : MonoBehaviour
 {
     public AudioSource menuAdvance;
     // Start is called before the first frame update
     void Start()
     {
-
+        
     }
 
     // Update is called once per frame
@@ -24,6 +24,6 @@ public class SplashSceneManager : MonoBehaviour
 
     void ChangeScene()//DR
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Instruction");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("SampleScene");
     }
 }

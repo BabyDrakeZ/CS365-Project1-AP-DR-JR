@@ -6,9 +6,12 @@ using UnityEngine.SceneManagement;
 public class Manager : MonoBehaviour
 {
     public GameObject Food;
+    public GameObject Food2;
+    public GameObject Food3;
     public GameObject swarm;
     public GameObject antHill;
     public GameObject[] enemyList;
+    public int enemyCounter = 0;
     public int maxFood = 10;
     private int numFood = 0;
     public int maxEnemies = 3;
@@ -70,9 +73,17 @@ public class Manager : MonoBehaviour
 
     IEnumerator SpawnEnemy()
     {
-        numEnemies++;
+        numEnemies++; enemyCounter++;
         yield return new WaitForSeconds(Random.Range(2, 10));
-        GameObject enemy = Instantiate(enemyList[Random.Range(0, enemyList.Length)]);
+        GameObject enemy;
+        if (enemyCounter < 5)
+        {
+            enemy = Instantiate(enemyList[Random.Range(0, enemyList.Length - 1)]);
+        }
+        else
+        {
+            enemy = Instantiate(enemyList[Random.Range(0, enemyList.Length)]);
+        }
         enemy.GetComponent<Enemy>().manager = this;
         GameObject[] avoid = {antHill, swarm};
         enemy.transform.position = Constants.C.notTouching(avoid,1);
@@ -82,10 +93,29 @@ public class Manager : MonoBehaviour
         numFood++;
         yield return new WaitForSeconds(Random.Range(2, 10));
         Vector3 newPos = Constants.C.notTouching(swarm);//Anthony
-        GameObject instance = Instantiate(Food);
-        instance.transform.position = newPos;
-        Food food = instance.GetComponent<Food>();
-        food.manager = this;
+        int num = Random.Range(1, 6);
+
+        if (num < 3)
+        {
+            GameObject instance = Instantiate(Food);
+            instance.transform.position = newPos;
+            Food food = instance.GetComponent<Food>();
+            food.manager = this;
+        }
+        else if (num < 5)
+        {
+            GameObject instance = Instantiate(Food2);
+            instance.transform.position = newPos;
+            Food food = instance.GetComponent<Food>();
+            food.manager = this;
+        }
+        else
+        {
+            GameObject instance = Instantiate(Food3);
+            instance.transform.position = newPos;
+            Food food = instance.GetComponent<Food>();
+            food.manager = this;
+        }
     }
 
     IEnumerator GameOver()

@@ -492,14 +492,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Food: {fileID: 2596645912303708508, guid: 6f1f915cbda155144a3f7708dc5fd20d, type: 3}
+  Food2: {fileID: 2596645912303708508, guid: b7400421cc34186408e4583be0ef7963, type: 3}
+  Food3: {fileID: 2596645912303708508, guid: 93bad83d85e7a2749baeb7488e1c5441, type: 3}
   swarm: {fileID: 7298301270261118265, guid: f65cea04bb5296e4b8dadb4c06f21adc, type: 3}
   antHill: {fileID: 1695886560}
   enemyList:
   - {fileID: 1941139058915197251, guid: 0b8dc256624a6a74d81704c6161a9e72, type: 3}
   - {fileID: 1941139058915197251, guid: 0b8dc256624a6a74d81704c6161a9e72, type: 3}
+  - {fileID: 2582852382684920609, guid: 92c74551f77eef24095b3b036af836ed, type: 3}
+  - {fileID: 2582852382684920609, guid: 92c74551f77eef24095b3b036af836ed, type: 3}
   - {fileID: 2551972550495858553, guid: a4efffffe4229e242a1978f6e32a9141, type: 3}
-  - {fileID: 2582852382684920609, guid: 92c74551f77eef24095b3b036af836ed, type: 3}
-  - {fileID: 2582852382684920609, guid: 92c74551f77eef24095b3b036af836ed, type: 3}
+  enemyCounter: 0
   maxFood: 10
   maxEnemies: 2
   enemyHardLimit: 30

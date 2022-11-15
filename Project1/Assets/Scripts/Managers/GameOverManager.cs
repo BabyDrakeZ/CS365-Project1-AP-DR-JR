@@ -12,6 +12,7 @@ public class GameOverManager : MonoBehaviour
     const string gameScoreKey = "GameScore";
     private int gameScoreValue = 0;
     private int highScoreValue = 0;
+    public AudioSource menuAdvance;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,6 +36,8 @@ public class GameOverManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Return))
         {
             SceneManager.LoadScene("SampleScene");
+            if (!menuAdvance.isPlaying)
+                menuAdvance.PlayOneShot(menuAdvance.clip, 0.25f);
         }
     }
 }
