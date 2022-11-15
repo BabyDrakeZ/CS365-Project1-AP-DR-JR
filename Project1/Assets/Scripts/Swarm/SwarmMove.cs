@@ -40,7 +40,6 @@ public class SwarmMove : MonoBehaviour
     {
         GetInput();
         localSpeed = Mathf.Clamp(localSpeed, 0, maxSpeed);
-        localSpeed = Mathf.Lerp(localSpeed, speed, lerpConstant);
         Vector3 newPostion = new Vector3(localSpeed * direction.x * Time.deltaTime, localSpeed * direction.y * Time.deltaTime, 0);
         this.transform.position += newPostion;
     }
@@ -90,7 +89,7 @@ public class SwarmMove : MonoBehaviour
         }
         if (isMoving)
         {
-            localSpeed += speed;
+            localSpeed = Mathf.Lerp(localSpeed, localSpeed+speed, lerpConstant);
         }
         if (direction == Vector2.zero)
         {

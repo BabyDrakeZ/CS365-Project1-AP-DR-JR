@@ -497,12 +497,13 @@ MonoBehaviour:
   enemyList:
   - {fileID: 1941139058915197251, guid: 0b8dc256624a6a74d81704c6161a9e72, type: 3}
   - {fileID: 1941139058915197251, guid: 0b8dc256624a6a74d81704c6161a9e72, type: 3}
-  - {fileID: 1941139058915197251, guid: 0b8dc256624a6a74d81704c6161a9e72, type: 3}
-  - {fileID: 1941139058915197251, guid: 0b8dc256624a6a74d81704c6161a9e72, type: 3}
+  - {fileID: 2551972550495858553, guid: a4efffffe4229e242a1978f6e32a9141, type: 3}
+  - {fileID: 2582852382684920609, guid: 92c74551f77eef24095b3b036af836ed, type: 3}
+  - {fileID: 2582852382684920609, guid: 92c74551f77eef24095b3b036af836ed, type: 3}
   maxFood: 15
   maxEnemies: 2
-  enemyHardLimit: 20
-  levelSpeed: 10
+  enemyHardLimit: 30
+  levelSpeed: 6
 --- !u!4 &726268269
 Transform:
   m_ObjectHideFlags: 0
@@ -511,7 +512,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 726268267}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.61681527, y: -0.6287737, z: 0.07941237}
+  m_LocalPosition: {x: 0, y: -0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

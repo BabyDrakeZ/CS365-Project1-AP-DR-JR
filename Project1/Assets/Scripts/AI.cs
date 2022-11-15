@@ -5,19 +5,29 @@ using UnityEngine;
 public class AI : MonoBehaviour
 {
     public enum AIType { vector, delta, evade, hopper, none };
+    public enum EnemyType { chase, seige, food};
+    public EnemyType enemyType = EnemyType.chase;
     public AIType aiType = AIType.none;
     public float speed = 1;
     public float actualSpeed = 1;
     public float lerpConstant = 0.9f;
-    private GameObject target;
+    public GameObject target;
     private string name;
+    private bool flipX;
     // Start is called before the first frame update
     void Start()
     {
+        flipX = GetComponent<SpriteRenderer>().flipX;
         name = "AIEnemy_" + Time.time.ToString();
-        target = GameObject.FindGameObjectWithTag("Player");
+        if (enemyType == EnemyType.chase)
+            target = GameObject.FindGameObjectWithTag("Player");
+        if (enemyType == EnemyType.seige)
+            target = GameObject.FindGameObjectWithTag("hill");
+        if (enemyType == EnemyType.food)
+            // NOT IMPLEMENTED YET
+            target = GameObject.FindGameObjectWithTag("Player");
         if (target == null)
-            Debug.Log("AI::Start couldn't find player" + name.ToString());
+            Debug.Log("AI::Start couldn't valid target" + name.ToString());
     }
 
     // Update is called once per frame
@@ -26,6 +36,13 @@ public class AI : MonoBehaviour
         actualSpeed = Mathf.Lerp(actualSpeed, speed, lerpConstant);
         Vector2 temp = actualSpeed * ProcessAI() * Time.deltaTime;
         transform.position += new Vector3(temp.x, temp.y, 0);
+        if (temp.x < -0.5)
+        {
+            GetComponent<SpriteRenderer>().flipX = !flipX;
+        } else if (temp.x > 0.5)
+        {
+            GetComponent<SpriteRenderer>().flipX = flipX;
+        }
     }
 
     Vector3 ProcessAI()
@@ -35,6 +52,7 @@ public class AI : MonoBehaviour
         switch (aiType)
         {
             case AIType.none:
+                dir = Vector2.zero;
                 break;
             case AIType.vector:
                 dir = VectorTrack(dir);
@@ -55,9 +73,9 @@ public class AI : MonoBehaviour
             default:
                 break;
         }
-        if (Mathf.Abs(dir.x) < 0.5)
+        if (Mathf.Abs(dir.x) < 0.1)
             dir.x = 0;
-        if (Mathf.Abs(dir.y) < 0.5)
+        if (Mathf.Abs(dir.y) < 0.1)
             dir.y = 0;
         return dir;
     }

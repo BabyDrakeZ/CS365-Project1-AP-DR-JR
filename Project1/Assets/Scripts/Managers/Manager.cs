@@ -13,7 +13,7 @@ public class Manager : MonoBehaviour
     private int numFood = 0;
     public int maxEnemies = 3;
     public int enemyHardLimit = 20;
-    public int levelSpeed = 10;
+    public int levelRate = 10;
     private int numEnemies = 0;
     private bool gameOver = false;
     const string highScoreKey = "HighScore";
@@ -40,6 +40,7 @@ public class Manager : MonoBehaviour
         swarm = Instantiate(swarm);
         antHill.GetComponent<GenerateAnt>().swarm = swarm;
         swarm.transform.position = Vector3.zero;
+        swarm.GetComponent<SwarmMove>().addMember(Vector3.zero);
         StartCoroutine(incrementLimit());
     }
 
@@ -56,10 +57,15 @@ public class Manager : MonoBehaviour
             StartCoroutine(GameOver());
         }
     }
-    public void DecrementNumFood()
+    public void DecrementNumFood(int points = 10)
     {
         numFood--;
-        gameScore += 10;
+        gameScore += points;
+    }
+    public void DecrementNumEnemies(int points = 10)
+    {
+        numEnemies--;
+        gameScore += points;
     }
 
     IEnumerator SpawnEnemy()
@@ -67,6 +73,7 @@ public class Manager : MonoBehaviour
         numEnemies++;
         yield return new WaitForSeconds(Random.Range(2, 10));
         GameObject enemy = Instantiate(enemyList[Random.Range(0, enemyList.Length)]);
+        enemy.GetComponent<Enemy>().manager = this;
         GameObject[] avoid = {antHill, swarm};
         enemy.transform.position = Constants.C.notTouching(avoid,1);
     }
@@ -97,10 +104,12 @@ public class Manager : MonoBehaviour
     {
         if (maxEnemies < enemyHardLimit)
         {
-            yield return new WaitForSeconds(levelSpeed);
+            yield return new WaitForSeconds(levelRate);
             maxEnemies++;
+            if (maxEnemies % 10 == 0)
+                levelRate+=5;
             if (maxEnemies > 10)
-                maxEnemies += maxEnemies/10;
+                maxEnemies += maxEnemies/5;
             StartCoroutine(incrementLimit());
         }
         else 

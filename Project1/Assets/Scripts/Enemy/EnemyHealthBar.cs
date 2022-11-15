@@ -11,15 +11,17 @@ public class EnemyHealthBar : MonoBehaviour
 
     private Enemy enemy;
 
-    private Image healthBar;
-    private float fill;
+    private RectTransform healthBarTransform;
     private float maximum;
+    private float fill;
+    private float maxWidth;
     
     void Start()
     {
+        healthBarTransform = GetComponent<RectTransform>();
         enemy = parentObject.GetComponent<Enemy>();
-        healthBar = GetComponent<Image>();
-        fill = enemy.health / 2;
+        maxWidth = healthBarTransform.rect.width;
+        fill = enemy.health;
         maximum = enemy.health;
 
     }
@@ -27,21 +29,8 @@ public class EnemyHealthBar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (enemy.health == 0)
-        {
-            //enemy.manager.gameOver();
-            Destroy(parentObject);
-            return;
-        }
         fill = Mathf.Lerp(fill, enemy.health, lerpConstant);
-        try
-        {
-            healthBar.fillAmount = fill/maximum;
-        }
-        catch
-        {
-            healthBar = GetComponent<Image>();
-        }
+        healthBarTransform.sizeDelta = new Vector2((fill/maximum)*maxWidth, healthBarTransform.sizeDelta.y);
 
     }
 }

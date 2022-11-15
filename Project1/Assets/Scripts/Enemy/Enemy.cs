@@ -9,64 +9,66 @@ public class Enemy : MonoBehaviour
     public float health = 50;
     public float attack = 5;
     public float attackSpeed = 1f;
-    public float speed = 0.75f;
     public AudioSource hillAttack;
-    private Vector3 direction;
-    private bool stopMovement = false;
-
+    private bool attacking = false;
+    private AI ai;
+    private AI.AIType initAI;
+    public ParticleSystem strikeEffect;
+    
     // Start is called before the first frame update
     void Start()
     {
-        direction = Vector3.zero - this.transform.position;
-        if (direction != Vector3.zero)
-        {
-            direction.Normalize();
-        }
+        ai = GetComponent<AI>();
+        initAI = ai.aiType;
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        
-        if (!stopMovement)
-        {
-            this.GetComponent<SpriteRenderer>().flipX = direction.x < 0;
-            Vector3 newPostion = new Vector3(speed * direction.x * Time.deltaTime, speed * direction.y * Time.deltaTime, 0);
-            this.transform.position += newPostion;
-        }
-        else {
-            StartCoroutine(Attack());
-        }
-        
-    }
     IEnumerator Attack()
     {
-        direction = this.transform.position - Vector3.zero;
-        if (direction != Vector3.zero)
+        Constants.C.health -= attack;
+        if (!hillAttack.isPlaying)
+            hillAttack.PlayOneShot(hillAttack.clip, 0.5f);
+        if (!strikeEffect.isPlaying)
         {
-            direction.Normalize();
+            strikeEffect.Play();
         }
-        stopMovement = false;
         yield return new WaitForSeconds(attackSpeed);
-        direction = Vector3.zero - this.transform.position;
-        if (direction != Vector3.zero)
+        attacking = false;
+        ai.aiType = initAI;
+    }
+    private void Update()
+    {
+        if (health < 0)
         {
-            direction.Normalize();
+            Destroy(gameObject);
+            manager.DecrementNumEnemies();
         }
     }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        GameObject obj = collision.gameObject;
+        if (obj.tag == "hill" && !attacking)
+        {
+            attacking = true;
+            ai.aiType = AI.AIType.none;
+            StartCoroutine(Attack());
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         GameObject obj = collision.gameObject;
-        if (obj.tag == "hill")
-        {
-            stopMovement = true;
-            Constants.C.health -= attack;
-            if (!hillAttack.isPlaying)
-                hillAttack.PlayOneShot(hillAttack.clip, 0.5f);
-        }
         if (obj.tag == "ant")
         {
-            this.health -= 5;
+            ai.aiType = AI.AIType.none;
+            StartCoroutine(Attack());
+            health -= 2 + obj.GetComponentInParent<SwarmMove>().Size() / 15f;
+            Destroy(obj);
+            Debug.Log(health.ToString());
+        }
+        if (obj.tag == "food")
+        {
             Destroy(obj);
         }
     }
