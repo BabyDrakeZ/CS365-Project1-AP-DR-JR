@@ -12,14 +12,14 @@ public class SwarmMove : MonoBehaviour
 
     public GameObject memberPrefab;
 
-    private Queue<GameObject> swarm = new Queue<GameObject>();
+    private List<GameObject> swarm = new List<GameObject>();
 
     public Vector2 direction = Vector2.zero;
     private float localSpeed = 0;
 
     // Start is called before the first frame update
     void Start()
-    {        
+    {
     }
 
     //Instantiates a new member and adds it to the swarm
@@ -28,11 +28,19 @@ public class SwarmMove : MonoBehaviour
         GameObject member = Instantiate(memberPrefab, this.gameObject.transform);
         member.transform.position = pos;
         //member.transform.parent = this.transform;
-        swarm.Enqueue(member);
+        swarm.Add(member);
+    }
+    public void removeMember(GameObject member)
+    {
+        swarm.Remove(member);
     }
     public int Size()
     {
         return swarm.Count;
+    }
+    public float CollectiveDamage()
+    {
+        return swarm.Count / 5f;
     }
 
     // Update is called once per frame

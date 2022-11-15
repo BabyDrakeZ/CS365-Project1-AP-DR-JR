@@ -47,7 +47,7 @@ public class Manager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(numFood < maxFood)
+        if (numFood < maxFood)
             StartCoroutine(SpawnFood());
         if (numEnemies < maxEnemies && enemyList.Length > 0)
             StartCoroutine(SpawnEnemy());

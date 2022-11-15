@@ -500,10 +500,10 @@ MonoBehaviour:
   - {fileID: 2551972550495858553, guid: a4efffffe4229e242a1978f6e32a9141, type: 3}
   - {fileID: 2582852382684920609, guid: 92c74551f77eef24095b3b036af836ed, type: 3}
   - {fileID: 2582852382684920609, guid: 92c74551f77eef24095b3b036af836ed, type: 3}
-  maxFood: 15
+  maxFood: 10
   maxEnemies: 2
   enemyHardLimit: 30
-  levelSpeed: 6
+  levelRate: 10
 --- !u!4 &726268269
 Transform:
   m_ObjectHideFlags: 0

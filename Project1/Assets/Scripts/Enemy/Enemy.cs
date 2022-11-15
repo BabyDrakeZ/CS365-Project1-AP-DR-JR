@@ -63,7 +63,7 @@ public class Enemy : MonoBehaviour
         {
             ai.aiType = AI.AIType.none;
             StartCoroutine(Attack());
-            health -= 2 + obj.GetComponentInParent<SwarmMove>().Size() / 15f;
+            health -= 2 + obj.GetComponentInParent<SwarmMove>().CollectiveDamage();
             Destroy(obj);
             Debug.Log(health.ToString());
         }

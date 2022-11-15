@@ -25,6 +25,11 @@ public class SwarmMember : MonoBehaviour
         swarm = GameObject.FindGameObjectWithTag("Player");
     }
 
+    private void OnDestroy()
+    {
+        swarm.GetComponent<SwarmMove>().removeMember(gameObject);
+    }
+
     // Update is called once per frame
     void Update()
     {
