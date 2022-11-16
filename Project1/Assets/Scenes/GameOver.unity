@@ -400,13 +400,13 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'The Remnants of the your Colony Flee
+  m_text: 'The Remnants of your Colony Flee
 
 
-    Robots Rule Over the Earth...
-    De-Bugged
+    Robots Rule Over the Earth... De-Bugged
 
-    For now...
+    For
+    now...
 
 
     Ants Always Return'
