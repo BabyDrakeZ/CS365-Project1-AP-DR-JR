@@ -9834,8 +9834,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   manager: {fileID: 0}
   health: 20
-  attack: 8
-  attackSpeed: 2
+  attack: 4
+  attackSpeed: 2.5
   hillAttack: {fileID: 3118842907767965566}
   strikeEffect: {fileID: 3694296314546169423}
 --- !u!114 &4007043518037261250

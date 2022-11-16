@@ -148,7 +148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manager: {fileID: 0}
-  foodVal: 13
+  foodVal: 20
   healthVal: 2
   foodsound: {fileID: -1631860814590140402}
 --- !u!82 &-1631860814590140402

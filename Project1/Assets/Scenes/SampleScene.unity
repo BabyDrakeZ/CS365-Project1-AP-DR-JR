@@ -554,9 +554,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 439a53f5c15a32e48a55920511f561cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  allSources: []
-  masterVolume: 100
-  fadeOut: 5
 --- !u!1 &971213806
 GameObject:
   m_ObjectHideFlags: 0
@@ -1458,7 +1455,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 1.75
+      scalar: 1.9
       minScalar: 0.25
       maxCurve:
         serializedVersion: 2
@@ -2150,7 +2147,7 @@ ParticleSystem:
       countCurve:
         serializedVersion: 2
         minMaxState: 0
-        scalar: 10
+        scalar: 25
         minScalar: 30
         maxCurve:
           serializedVersion: 2
