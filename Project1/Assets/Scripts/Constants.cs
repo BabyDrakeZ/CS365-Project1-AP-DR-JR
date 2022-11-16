@@ -47,17 +47,19 @@ public class Constants : MonoBehaviour
             x = Random.Range(-Constants.C.boundX * worldBounds, Constants.C.boundX * worldBounds);
             y = Random.Range(-Constants.C.boundY * worldBounds, Constants.C.boundY * worldBounds);
             distance = new Vector2(x - obj.transform.position.x, y - obj.transform.position.y);
-        } while (distance.magnitude < 3);
+        } while (distance.magnitude < 4);
         return new Vector3(x, y, 0);
     }
     public Vector3 notTouching(GameObject[] gameObjects, float worldBounds = 0.5f)
     {
         //David (extending notTouching)
+
         int tries = 0;
         float[] magnitudes = new float[gameObjects.Length];
         Vector3 pos = Vector3.zero;
         float x = Random.Range(-Constants.C.boundX * worldBounds, Constants.C.boundX * worldBounds);
         float y = Random.Range(-Constants.C.boundY * worldBounds, Constants.C.boundY * worldBounds);
+        int signX = Random.Range(0, 2);
         do
         {
             tries++;
@@ -69,7 +71,7 @@ public class Constants : MonoBehaviour
                 pos = new Vector3(x - obj.transform.position.x, y - obj.transform.position.y, 0);
                 magnitudes[i] = pos.magnitude;
             }
-        } while (Mathf.Max(magnitudes) < 3 && tries < 100);
+        } while (Mathf.Max(magnitudes) < 4 && tries < 1000);
         return new Vector3(x, y, 0);
     }
 }

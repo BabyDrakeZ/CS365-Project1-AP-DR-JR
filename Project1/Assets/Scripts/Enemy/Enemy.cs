@@ -38,7 +38,7 @@ public class Enemy : MonoBehaviour
     }
     private void Update()
     {
-        if (health < 0)
+        if (health <= 0)
         {
             Destroy(gameObject);
             manager.DecrementNumEnemies();

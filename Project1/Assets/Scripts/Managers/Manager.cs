@@ -54,7 +54,35 @@ public class Manager : MonoBehaviour
             StartCoroutine(SpawnFood());
         if (numEnemies < maxEnemies && enemyList.Length > 0)
             StartCoroutine(SpawnEnemy());
-        if (Constants.C.health <= 0)
+        if (Constants.C.health <= 0 && !gameOver)
+        {
+            gameOver = true;
+            StartCoroutine(GameOver());
+        }
+        if (swarm.GetComponent<SwarmMove>().Size() == 0 && !gameOver)
+        {
+            StartCoroutine(CheckAnts());
+        }
+    }
+    IEnumerator GameOver()
+    {
+        
+        gameOver = true;
+        PlayerPrefs.SetInt(gameScoreKey, gameScore);
+        if (gameScore > pastScore)
+        {
+            //new highscore
+            PlayerPrefs.SetInt(highScoreKey, gameScore);
+        }
+        StartCoroutine(StartFade(swarm.GetComponent<AudioSource>(), 4.8f, 0f));
+        yield return new WaitForSeconds(5f);
+
+        SceneManager.LoadScene("GameOver");
+    }
+    IEnumerator CheckAnts()
+    {
+        yield return new WaitForSeconds(2);
+        if (swarm.GetComponent<SwarmMove>().Size() == 0)
         {
             gameOver = true;
             StartCoroutine(GameOver());
@@ -70,29 +98,32 @@ public class Manager : MonoBehaviour
         numEnemies--;
         gameScore += points;
     }
-
+    
     IEnumerator SpawnEnemy()
     {
         numEnemies++; enemyCounter++;
         yield return new WaitForSeconds(Random.Range(2, 10));
         GameObject enemy;
-        if (enemyCounter < 5)
+        if (enemyCounter < levelRate*1.5f)
         {
             enemy = Instantiate(enemyList[Random.Range(0, enemyList.Length - 1)]);
+            enemy.SetActive(false);
         }
         else
         {
             enemy = Instantiate(enemyList[Random.Range(0, enemyList.Length)]);
+            enemy.SetActive(false);
         }
         enemy.GetComponent<Enemy>().manager = this;
         GameObject[] avoid = {antHill, swarm};
         enemy.transform.position = Constants.C.notTouching(avoid,1);
+        enemy.SetActive(true);
     }
     IEnumerator SpawnFood()
     {
         numFood++;
         yield return new WaitForSeconds(Random.Range(2, 10));
-        Vector3 newPos = Constants.C.notTouching(swarm);//Anthony
+        Vector3 newPos = Constants.C.notTouching(swarm, 0.75f);//Anthony
         int num = Random.Range(1, 6);
 
         if (num < 3)
@@ -118,20 +149,7 @@ public class Manager : MonoBehaviour
         }
     }
 
-    IEnumerator GameOver()
-    {
-        gameOver = true;
-        PlayerPrefs.SetInt(gameScoreKey, gameScore);
-        if (gameScore > pastScore)
-        {
-            //new highscore
-            PlayerPrefs.SetInt(highScoreKey, gameScore);
-        }
-        StartCoroutine(StartFade(swarm.GetComponent<AudioSource>(), 4.8f, 0f));
-        yield return new WaitForSeconds(5f);
-
-        SceneManager.LoadScene("GameOver");
-    }
+    
     //Anthony
     IEnumerator incrementLimit()
     {
