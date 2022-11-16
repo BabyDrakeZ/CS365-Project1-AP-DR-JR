@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1171169957044726067, guid: 92c74551f77eef24095b3b036af836ed, type: 3}
+      propertyPath: attack
+      value: 0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 2582852382684920609, guid: 92c74551f77eef24095b3b036af836ed, type: 3}
       propertyPath: m_Name
       value: Hopper Chase

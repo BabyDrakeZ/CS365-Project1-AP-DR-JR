@@ -18,7 +18,7 @@ public class Manager : MonoBehaviour
     public int enemyHardLimit = 20;
     public int levelRate = 10;
     private int numEnemies = 0;
-    private bool gameOver = false;
+    public bool gameOver = false;
     const string highScoreKey = "HighScore";
     const string gameScoreKey = "GameScore";
     private int gameScore = 0;
@@ -120,13 +120,16 @@ public class Manager : MonoBehaviour
 
     IEnumerator GameOver()
     {
-        yield return new WaitForSeconds(0.2f);
+        gameOver = true;
         PlayerPrefs.SetInt(gameScoreKey, gameScore);
         if (gameScore > pastScore)
         {
             //new highscore
             PlayerPrefs.SetInt(highScoreKey, gameScore);
         }
+        StartCoroutine(StartFade(swarm.GetComponent<AudioSource>(), 5, 0f));
+        yield return new WaitForSeconds(5f);
+
         SceneManager.LoadScene("GameOver");
     }
     //Anthony
@@ -143,6 +146,18 @@ public class Manager : MonoBehaviour
             StartCoroutine(incrementLimit());
         }
         else 
-            yield return new WaitForEndOfFrame();
+            yield break;
+    }
+    public static IEnumerator StartFade(AudioSource audioSource, float duration, float targetVolume)
+    {
+        float currentTime = 0;
+        float start = audioSource.volume;
+        while (currentTime < duration)
+        {
+            currentTime += Time.deltaTime;
+            audioSource.volume = Mathf.Lerp(start, targetVolume, currentTime / duration);
+            yield return null;
+        }
+        yield break;
     }
 }
