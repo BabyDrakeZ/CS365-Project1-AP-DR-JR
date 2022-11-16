@@ -127,7 +127,7 @@ public class Manager : MonoBehaviour
             //new highscore
             PlayerPrefs.SetInt(highScoreKey, gameScore);
         }
-        StartCoroutine(StartFade(swarm.GetComponent<AudioSource>(), 5, 0f));
+        StartCoroutine(StartFade(swarm.GetComponent<AudioSource>(), 4.8f, 0f));
         yield return new WaitForSeconds(5f);
 
         SceneManager.LoadScene("GameOver");
